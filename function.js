@@ -1,4 +1,7 @@
-const { chromium } = require('playwright');
+// const { chromium } = require('playwright');
+import { chromium } from 'playwright';
+import { waitUntil } from './waitUntil.js';
+import { subtractMsFromTime } from './subtractMsFromTime.js';
 
 (async () => {
   try {
@@ -8,6 +11,13 @@ const { chromium } = require('playwright');
     const SHOW_NAME = '빛을 구해줘';
     const TARGET_DATE = '25';
     const TARGET_TIME = '오후 3:00';
+    const startTime = {
+        hour: 18,
+            minute: 13,
+            second: 0,
+            ms:0
+        };
+    const waitTime = subtractMsFromTime(startTime, 500);
     // const idSelector = '#input_item_id #id';
     // const idInput = 'syn_1234';
     // const pwSelector = '#input_item_pw #pw';
@@ -42,7 +52,10 @@ const { chromium } = require('playwright');
     await showBtn.waitFor({ state: 'visible' });
     await showBtn.click();
 
-    // await page.reload({ waitUntil: 'domcontentloaded' });
+    console.log('지정 시간까지 대기 중...');
+    await waitUntil(waitTime);
+
+    await page.reload({ waitUntil: 'domcontentloaded' }); //새로고침.탭
     // await page.waitForTimeout(400);
 
 

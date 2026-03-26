@@ -1,19 +1,19 @@
 // const { chromium } = require('playwright');
 import { chromium } from 'playwright';
-import { waitUntil } from './res_func/waitUntil.js';
-import { subtractMsFromTime } from './res_func/subtractMsFromTime.js';
+import { waitUntil } from './waitUntil.js';
+import { subtractMsFromTime } from './subtractMsFromTime.js';
 
 (async () => {
   try {
     const browser = await chromium.launch({headless:false});
     const page= await browser.newPage();
     const RESERVATION_URL = 'https://pcmap.place.naver.com/place/1163403341/ticket';
-    const SHOW_NAME = '빛을 구해줘';
-    const TARGET_DATE = '25';
+    const SHOW_NAME = '생존자';
+    const TARGET_DATE = '2';
     const TARGET_TIME = '오후 3:00';
     const startTime = {
-        hour: 18,
-            minute: 13,
+        hour: 17,
+            minute: 37,
             second: 0,
             ms:0
         };

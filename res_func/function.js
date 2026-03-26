@@ -50,10 +50,10 @@ export async function runReservation({
     await page.goto(reservationUrl, { waitUntil: 'domcontentloaded' });
 
     // 2. 공연 선택
-    const showBtn = page.locator('span.item_txt', { hasText: showName });
+    const showBtn = page.locator('span.lsthu', { hasText: showName });
     await showBtn.waitFor({ state: 'visible' });
     await showBtn.click();
-
+    
     // 3. 지정 시간까지 대기
     console.log('지정 시간까지 대기 중...');
     await waitUntil(waitTime);

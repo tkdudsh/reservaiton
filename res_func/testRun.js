@@ -1,9 +1,10 @@
 import { runReservation } from "./function.js";
 
 await runReservation({
-  showName: '생존자',
+  showName: '빛을 구해줘',
   targetDate: '2',
-  targetTime: '오후 8:00',
-  startHour: 17,
-  startMinute: 37
+  targetTime: '오후 8:20',
+  startHour: 22,
+  startMinute: 57
+  
 });

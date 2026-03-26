@@ -1,8 +1,27 @@
 {
   "dependencies": {
     "playwright": "^1.58.2"
-    
   },
-  "type": "module"
-  
+  "type": "module",
+  "name": "electron-test",
+  "version": "1.0.0",
+  "main": "electron_app/main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "description": "",
+  "devDependencies": {
+    "electron": "^41.0.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tkdudsh/reservaiton.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tkdudsh/reservaiton/issues"
+  },
+  "homepage": "https://github.com/tkdudsh/reservaiton#readme"
 }

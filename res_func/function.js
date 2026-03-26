@@ -1,7 +1,7 @@
 // const { chromium } = require('playwright');
 import { chromium } from 'playwright';
-import { waitUntil } from './waitUntil.js';
-import { subtractMsFromTime } from './subtractMsFromTime.js';
+import { waitUntil } from './res_func/waitUntil.js';
+import { subtractMsFromTime } from './res_func/subtractMsFromTime.js';
 
 (async () => {
   try {

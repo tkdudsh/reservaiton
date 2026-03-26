@@ -8,23 +8,23 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     const browser = await chromium.launch({headless:false});
     const page= await browser.newPage();
     const RESERVATION_URL = 'https://pcmap.place.naver.com/place/1163403341/ticket';
-    const SHOW_NAME = '생존자';
-    const TARGET_DATE = '2';
-    const TARGET_TIME = '오후 3:00';
-    const startTime = {
-        hour: 17,
-            minute: 37,
-            second: 0,
-            ms:0
-        };
-    const waitTime = subtractMsFromTime(startTime, 500);
+    const SHOW_NAME = '빛을 구해줘';
+    const TARGET_DATE = '27';
+    const TARGET_TIME = '오후 7:00';
+    // const startTime = {
+    //     hour: 22,
+    //         minute: 51,
+    //         second: 0,
+    //         ms:0
+    //     };
+    // const waitTime = subtractMsFromTime(startTime, 300);
     // const idSelector = '#input_item_id #id';
     // const idInput = 'syn_1234';
     // const pwSelector = '#input_item_pw #pw';
     // const pwInput = ;
 
     
-    //await page.goto('https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/');
+    // await page.goto('https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/');
 
     // await page.fill(idSelector, idInput);
     // await page.waitForTimeout(100);
@@ -45,8 +45,7 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     
     await page.goto(RESERVATION_URL);
 
-    // await page.locator('span.lsthu', { hasText: SHOW_NAME }).click();
-    // await page.waitForTimeout(300);
+    
 
     const showBtn = page.locator('span.lsthu', { hasText: SHOW_NAME });
     await showBtn.waitFor({ state: 'visible' });

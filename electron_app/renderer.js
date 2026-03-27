@@ -12,7 +12,6 @@ startBtn.addEventListener('click', async () => {
   };
 
   console.log('입력값:', data);
-
   resultEl.innerText = '실행 중...';
 
   try {
@@ -24,7 +23,7 @@ startBtn.addEventListener('click', async () => {
       resultEl.innerText = '❌ 실패: ' + result.message;
     }
   } catch (err) {
-    console.error(err);
-    resultEl.innerText = '❌ 오류 발생';
+    console.error('renderer 오류:', err);
+    resultEl.innerText = '❌ 오류 발생: ' + (err?.message || String(err));
   }
 });

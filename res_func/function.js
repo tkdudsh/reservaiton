@@ -65,12 +65,6 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
   .locator('td')
   .nth(6)   // 왼쪽부터 일 선택
   .locator('button.calendar_date');
-    // const dateBtn = page.locator(Time_Button, { hasText: TARGET_DATE });
-    // await dateBtn.waitFor({ state: 'visible' });
-    // await dateBtn.click();
-//     const dateBtn = page.locator(
-//   'button.calendar_date:not(.unselectable):not([aria-disabled="true"])'
-// ).getByRole('button', { name: '2' });
 await targetBtn.waitFor({ state: 'visible' });
     await targetBtn.click();
     

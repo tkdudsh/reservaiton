@@ -5,7 +5,8 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
 export async function runReservation({
   reservationUrl = 'https://pcmap.place.naver.com/place/1163403341/ticket',
   showName,
-
+  targetWeekIndex,
+  targetDayIndex,
   targetTime,
   startHour,
   startMinute
@@ -31,7 +32,7 @@ export async function runReservation({
       ms: 0
     };
 
-    const waitTime = subtractMsFromTime(startTime, 150);
+    const waitTime = subtractMsFromTime(startTime, 100);
 
     console.log('예약 실행 시작');
     console.log('예약 정보:', {
@@ -44,6 +45,16 @@ export async function runReservation({
 
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
+
+// await page.goto('https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/');
+
+//     console.log('직접 로그인하세요.');
+
+//     // 2. 로그인 완료될 때까지 기다리기
+//     // 네이버 메인으로 이동하거나, 로그인 상태 요소가 나타날 때까지 기다리는 방식
+//     await page.waitForURL('https://www.naver.com/**', { timeout: 120000 });
+
+//     console.log('로그인 완료됨');
 
     // 1. 예약 페이지 이동
     await page.goto(reservationUrl, { waitUntil: 'domcontentloaded' });
@@ -64,9 +75,9 @@ export async function runReservation({
     // 5. 날짜 선택
     const targetBtn = page
   .locator('tbody.calendar_body > tr')
-  .nth(4)   // 주차 선택
+  .nth(Number(targetWeekIndex) - 1)   // 주차 선택
   .locator('td')
-  .nth(0)   // 왼쪽부터 일 선택
+  .nth(Number(targetDayIndex) - 1)  // 왼쪽부터 일 선택
   .locator('button.calendar_date');
 await targetBtn.waitFor({ state: 'visible' });
     await targetBtn.click();

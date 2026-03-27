@@ -4,60 +4,69 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>예약 매크로 입력</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>예약 매크로</h1>
+    <div class="container">
+      <h1>예약 매크로</h1>
 
-    <div>
-      <label for="showName">방탈출 이름</label><br />
-      <input id="showName" type="text" placeholder="예: 생존자" />
+      <div class="input-group">
+        <label for="showName">방탈출 이름</label>
+        <input id="showName" type="text" placeholder="예: 생존자" />
+      </div>
+
+      <div class="input-group">
+        <label for="targetWeekIndex">주차 선택</label>
+        <input
+          id="targetWeekIndex"
+          type="number"
+          min="0"
+          placeholder="예:달력 기준 5주차면 5"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="targetDayIndex">일 선택</label>
+        <input
+          id="targetDayIndex"
+          type="number"
+          min="0"
+          max="6"
+          placeholder="예: 첫번째 칸 원하면 1"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="targetTime">예약 시간</label>
+        <input id="targetTime" type="text" placeholder="예: 오후 3:00" />
+      </div>
+
+      <div class="input-group">
+        <label for="startHour">매크로 시작 시</label>
+        <input
+          id="startHour"
+          type="number"
+          min="0"
+          max="23"
+          placeholder="예: 17"
+        />
+      </div>
+
+      <div class="input-group">
+        <label for="startMinute">매크로 시작 분</label>
+        <input
+          id="startMinute"
+          type="number"
+          min="0"
+          max="59"
+          placeholder="예: 37"
+        />
+      </div>
+
+      <button id="startBtn" type="button">예약 시작</button>
+
+      <p id="result"></p>
     </div>
-
-    <br />
-
-    <div>
-      <label for="targetDate">예약 날짜</label><br />
-      <input id="targetDate" type="text" placeholder="예: 2" />
-    </div>
-
-    <br />
-
-    <div>
-      <label for="targetTime">예약 시간</label><br />
-      <input id="targetTime" type="text" placeholder="예: 오후 8:00" />
-    </div>
-
-    <br />
-
-    <div>
-      <label for="startHour">매크로 시작 시</label><br />
-      <input
-        id="startHour"
-        type="number"
-        min="0"
-        max="23"
-        placeholder="예: 17"
-      />
-    </div>
-
-    <br />
-
-    <div>
-      <label for="startMinute">매크로 시작 분</label><br />
-      <input
-        id="startMinute"
-        type="number"
-        min="0"
-        max="59"
-        placeholder="예: 37"
-      />
-    </div>
-
-    <br />
-
-    <button id="startBtn" type="button">예약 시작</button>
-
-    <p id="result"></p>
 
     <script src="./renderer.js"></script>
   </body>

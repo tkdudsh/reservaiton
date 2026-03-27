@@ -9,8 +9,7 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     const page= await browser.newPage();
     const RESERVATION_URL = 'https://pcmap.place.naver.com/place/1163403341/ticket';
     const SHOW_NAME = '빛을 구해줘';
-    const TARGET_DATE = '2';
-    const TARGET_TIME = '오후 7:00';
+    const TARGET_TIME = '오후 11:30';
     // const startTime = {
     //     hour: 22,
     //         minute: 51,
@@ -58,22 +57,28 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     // await page.waitForTimeout(400);
 
 
-    await page.locator('button.calendar_date', { hasText: '28' }).click();
-    await page.waitForTimeout(500);
+    // await page.locator('button.calendar_date', { hasText: '28' }).click();
+    // await page.waitForTimeout(500);
+    const targetBtn = page
+  .locator('tbody.calendar_body > tr')
+  .nth(3)   // 주차 선택
+  .locator('td')
+  .nth(6)   // 왼쪽부터 일 선택
+  .locator('button.calendar_date');
     // const dateBtn = page.locator(Time_Button, { hasText: TARGET_DATE });
     // await dateBtn.waitFor({ state: 'visible' });
     // await dateBtn.click();
 //     const dateBtn = page.locator(
 //   'button.calendar_date:not(.unselectable):not([aria-disabled="true"])'
 // ).getByRole('button', { name: '2' });
-// await dateBtn.waitFor({ state: 'visible' });
-//     await dateBtn.click();
+await targetBtn.waitFor({ state: 'visible' });
+    await targetBtn.click();
     
     
 
     // await page.locator('button.btn_time', { hasText: TARGET_TIME }).click();
     // await page.waitForTimeout(500);
-    const timeBtn = page.locator(Time_Button, { hasText: TARGET_TIME });
+    const timeBtn = page.locator('button.btn_time', { hasText: TARGET_TIME });
     await timeBtn.waitFor({ state: 'visible' });
     await timeBtn.click();
     

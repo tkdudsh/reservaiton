@@ -5,14 +5,14 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
 export async function runReservation({
   reservationUrl = 'https://pcmap.place.naver.com/place/1163403341/ticket',
   showName,
-  targetDate,
+
   targetTime,
   startHour,
   startMinute
 }) {
   try {
-    if (!showName || !targetDate || !targetTime) {
-      throw new Error('showName, targetDate, targetTime 값이 필요합니다.');
+    if (!showName || !targetTime) {
+      throw new Error('showName, targetTime 값이 필요합니다.');
     }
 
     if (
@@ -31,13 +31,12 @@ export async function runReservation({
       ms: 0
     };
 
-    const waitTime = subtractMsFromTime(startTime, 500);
+    const waitTime = subtractMsFromTime(startTime, 150);
 
     console.log('예약 실행 시작');
     console.log('예약 정보:', {
       reservationUrl,
       showName,
-      targetDate,
       targetTime,
       startTime,
       waitTime
@@ -63,10 +62,14 @@ export async function runReservation({
     await page.reload({ waitUntil: 'domcontentloaded' });
 
     // 5. 날짜 선택
-    const dateBtn = page.locator('button.calendar_date', { hasText: targetDate });
-    await dateBtn.waitFor({ state: 'visible' });
-    await dateBtn.click();
-    console.log('날짜 클릭 완료');
+    const targetBtn = page
+  .locator('tbody.calendar_body > tr')
+  .nth(4)   // 주차 선택
+  .locator('td')
+  .nth(0)   // 왼쪽부터 일 선택
+  .locator('button.calendar_date');
+await targetBtn.waitFor({ state: 'visible' });
+    await targetBtn.click();
 
     // 6. 시간 선택
     const timeBtn = page.locator('button.btn_time', { hasText: targetTime });

@@ -9,7 +9,7 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     const page= await browser.newPage();
     const RESERVATION_URL = 'https://pcmap.place.naver.com/place/1163403341/ticket';
     const SHOW_NAME = '빛을 구해줘';
-    const TARGET_DATE = '27';
+    const TARGET_DATE = '2';
     const TARGET_TIME = '오후 7:00';
     // const startTime = {
     //     hour: 22,
@@ -51,24 +51,29 @@ import { subtractMsFromTime } from './subtractMsFromTime.js';
     await showBtn.waitFor({ state: 'visible' });
     await showBtn.click();
 
-    console.log('지정 시간까지 대기 중...');
-    await waitUntil(waitTime);
+    // console.log('지정 시간까지 대기 중...');
+    // await waitUntil(waitTime);
 
-    await page.reload({ waitUntil: 'domcontentloaded' }); //새로고침.탭
+    // await page.reload({ waitUntil: 'domcontentloaded' }); //새로고침.탭
     // await page.waitForTimeout(400);
 
 
-    // await page.locator('button.calendar_date', { hasText: TARGET_DATE }).click();
-    // await page.waitForTimeout(500);
-    const dateBtn = page.locator('button.calendar_date', { hasText: TARGET_DATE });
-    await dateBtn.waitFor({ state: 'visible' });
-    await dateBtn.click();
+    await page.locator('button.calendar_date', { hasText: '28' }).click();
+    await page.waitForTimeout(500);
+    // const dateBtn = page.locator(Time_Button, { hasText: TARGET_DATE });
+    // await dateBtn.waitFor({ state: 'visible' });
+    // await dateBtn.click();
+//     const dateBtn = page.locator(
+//   'button.calendar_date:not(.unselectable):not([aria-disabled="true"])'
+// ).getByRole('button', { name: '2' });
+// await dateBtn.waitFor({ state: 'visible' });
+//     await dateBtn.click();
     
     
 
     // await page.locator('button.btn_time', { hasText: TARGET_TIME }).click();
     // await page.waitForTimeout(500);
-    const timeBtn = page.locator('button.btn_time', { hasText: TARGET_TIME });
+    const timeBtn = page.locator(Time_Button, { hasText: TARGET_TIME });
     await timeBtn.waitFor({ state: 'visible' });
     await timeBtn.click();
     

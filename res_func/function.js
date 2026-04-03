@@ -32,7 +32,7 @@ export async function runReservation({
       ms: 0
     };
 
-    const waitTime = subtractMsFromTime(startTime, 100);
+    const waitTime = subtractMsFromTime(startTime, 10);
 
     console.log('예약 실행 시작');
     console.log('예약 정보:', {
@@ -46,15 +46,15 @@ export async function runReservation({
     const browser = await chromium.launch({ headless: false });
     const page = await browser.newPage();
 
-// await page.goto('https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/');
+await page.goto('https://nid.naver.com/nidlogin.login?mode=form&url=https://www.naver.com/');
 
-//     console.log('직접 로그인하세요.');
+    console.log('직접 로그인하세요.');
 
-//     // 2. 로그인 완료될 때까지 기다리기
-//     // 네이버 메인으로 이동하거나, 로그인 상태 요소가 나타날 때까지 기다리는 방식
-//     await page.waitForURL('https://www.naver.com/**', { timeout: 120000 });
+    // 2. 로그인 완료될 때까지 기다리기
+    // 네이버 메인으로 이동하거나, 로그인 상태 요소가 나타날 때까지 기다리는 방식
+    await page.waitForURL('https://www.naver.com/**', { timeout: 120000 });
 
-//     console.log('로그인 완료됨');
+    console.log('로그인 완료됨');
 
     // 1. 예약 페이지 이동
     await page.goto(reservationUrl, { waitUntil: 'domcontentloaded' });
@@ -93,6 +93,10 @@ await targetBtn.waitFor({ state: 'visible' });
     await nextBtn.waitFor({ state: 'visible' });
     await nextBtn.click();
     console.log('다음 버튼 클릭 완료');
+
+    const nextBtn2 = page.locator('button', { hasText: '동의하고 예약하기' });
+    await nextBtn2.waitFor({ state: 'visible' });
+    await nextBtn2.click();
 
     return {
       success: true,

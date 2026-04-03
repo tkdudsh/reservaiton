@@ -2,7 +2,9 @@ const startBtn = document.getElementById('startBtn');
 const resultEl = document.getElementById('result');
 
 startBtn.addEventListener('click', async () => {
+  console.log(window.api)
   const data = {
+    
     showName: document.getElementById('showName').value,
     targetWeekIndex: Number(document.getElementById('targetWeekIndex').value),
     targetDayIndex: Number(document.getElementById('targetDayIndex').value),

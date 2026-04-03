@@ -6,6 +6,8 @@ import { runReservation } from '../res_func/function.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+console.log('실행된 main.js:', __filename);
+
 function createWindow() {
   const win = new BrowserWindow({
     width: 900,

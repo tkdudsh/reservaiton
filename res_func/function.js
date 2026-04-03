@@ -32,7 +32,7 @@ export async function runReservation({
       ms: 0
     };
 
-    const waitTime = subtractMsFromTime(startTime, 10);
+    const waitTime = subtractMsFromTime(startTime, 250);
 
     console.log('예약 실행 시작');
     console.log('예약 정보:', {

@@ -1,3 +1,6 @@
+console.log('renderer loaded');
+console.log('window.api at load:', window.api);
+
 const startBtn = document.getElementById('startBtn');
 const resultEl = document.getElementById('result');
 

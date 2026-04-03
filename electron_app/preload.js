@@ -4,8 +4,10 @@
 //   const result = await runReservation(data);
 //   return result;
 // });
+console.log('preload loaded');
 
-import { contextBridge, ipcRenderer } from 'electron';
+// import { contextBridge, ipcRenderer } from 'electron';
+const { contextBridge, ipcRenderer } = require('electron');
 
 contextBridge.exposeInMainWorld('api', {
   startReservation: (data) => ipcRenderer.invoke('start-reservation', data)
